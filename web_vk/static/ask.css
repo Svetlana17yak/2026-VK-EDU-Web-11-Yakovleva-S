@@ -1,0 +1,61 @@
+.new-question {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+h3{
+    font-size: 30px;
+    font-family: cursive, sans-serif;
+}
+.title-ask {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+.text-ask {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+.tags-ask {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+}
+.form-input {
+    margin-left: 60px;
+    width: 90%;
+    border-color: blueviolet;
+    border-radius: 4px;
+    font-size: 25px;
+    font-family: inherit, sans-serif;
+}
+.form-input:focus {
+    box-shadow: 3px 3px 0px #000; /* Эффект объема при клике */
+}
+.ask-submit-btn{
+    background-color:rgb(214, 158, 239);
+    color: rgb(76, 14, 151);
+    font-family: cursive,  Helvetica, sans-serif;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    background-image: linear-gradient(to bottom, rgb(192, 136, 235) 0%, rgb(192, 154, 238) 100%);
+   /* box-shadow: 0 4px 6px rgba(157, 25, 200, 0.2);*/
+    transition: all 0.1s ease-in-out;
+    border: 2px solid black;
+    box-shadow: 3px 3px 0px black; 
+    margin-left: 110px;
+    
+}
+.pink-letter {
+    color: #f200ff;
+}
+.ask-submit-btn:hover {
+    background-color: rgb(233, 223, 239);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px black;
+}

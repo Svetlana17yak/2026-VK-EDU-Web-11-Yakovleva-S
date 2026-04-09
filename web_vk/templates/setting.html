@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'setting.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h2>
+        <span class="pink-letter">&#9881; S</span>et<span class="pink-letter">t</span><span class="blue-letter">i</span>ngs: {{ request.user.username|default:"Dr. Pepe" }}</span>
+
+    </h2>
+    <form method="POST" action="" enctype="multipart/form-data" class="settings-form">
+
+        {% csrf_token %}
+
+        <div class="login">
+            <label class="text-login">Login</label>
+            <input type="text" name="login" placeholder="dr_pepe">
+        </div>
+
+        <div class="email">
+            <label class="text-email">Email</label>
+            <input type="email" name="email" placeholder="dr.pepe@mail.ru">
+        </div>
+
+        <div class="nickname">
+            <label class="nickname">NickName</label>
+            <input type="text" name="nickname" placeholder="Dr. Pepe">
+        </div>
+
+        <div class="ava">
+            <label class="avatar">Upload avatar</label>
+            
+            <div class="ava-picture">
+                <img src="{% static 'Hamster Eyes.jpeg' %}" alt="Avatar preview">
+                <input type="file" name="avatar">
+            </div>
+        </div>
+
+
+        <div class="save-btn">
+            <button type="submit" class="butt">Save</button>
+        </div>
+
+    </form>
+{% endblock %}

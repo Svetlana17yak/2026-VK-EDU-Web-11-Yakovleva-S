@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'question.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="left-coloumn">
+            <img src="{% static 'ava1.jpg' %}" alt="Аватар" class="avatar">
+            <div class="rating">
+                <dev class="rating-value">
+                    {{ question.rating }}
+                </dev>
+                <div class="rating-controls">
+                    <button class="vote-btn" title="Like">&#9650;</button>
+                    <button class="vote-btn" title="Dislike">&#9660</button>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="text-content">
+            <div class="text">
+                <a class="title">{{ question.title }}</a>
+                <span>{{ question.text }}</span>
+            </div>
+        
+            <div class="answer-tags">
+               
+                <span class="tags-label">Tags:</span>
+                <a href="" class="tag">blac-jack</a> 
+                <a href="" class="tag">bender</a>
+            </div>
+        </div>
+    </div>
+
+<hr>
+<h2><span class="pink-letter">A</span>ns<span class="pink-letter">w</span>ers:</h2>
+
+{% for answer in answers %}
+    <div class="answer-card">
+        
+        <div class="left-coloumn">
+            <img src="{% static 'ava1.jpg' %}" alt="Аватар" class="avatar">
+            <div class="rating">
+                <div class="rating-value">{{ answer.rating }}</div>
+                <div class="rating-controls">
+                    <button class="vote-btn" title="Like">&#9650;</button>
+                    <button class="vote-btn" title="Dislike">&#9660;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-content">
+            <div class="text">
+                <span>{{ answer.text }}</span>
+            </div>
+
+            <div class="correct-checkbox" style="margin-top: 15px;">
+                <label>
+                    <input type="checkbox"> Correct!
+                </label>
+            </div>
+        </div>
+
+    </div>
+{% endfor %}
+
+<hr>
+
+<form class="new-answer-form" style="margin-top: 20px;">
+    <textarea class="form-control" rows="5" placeholder="Enter your answer here.." style="width: 100%; margin-bottom: 10px;"></textarea>
+    <button type="button" class="btn">Answer</button>
+</form>
+
+{% endblock %}

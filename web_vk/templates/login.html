@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'setting.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h2><span class="pink-letter">L</span>og <span class="pink-letter">I</span>n</h2>
+
+    <p>
+        Sorry, wrong password!
+    </p>
+
+    <!-- Форма авторизации -->
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="login">
+            <label class="text-login">Login</label>
+            <input type="text" name="username" placeholder="Enter your login here">
+        </div>
+
+        <div class="email">
+            <label class="text-email">Password</label>
+            <input type="password" name="password" placeholder="********">
+        </div>
+
+        <div class="save-btn">
+            <button type="submit" class="butt">Log in!</button>
+
+            <a href="{% url 'register' %}" class="reg">
+                create new account
+            </a>
+        </div>
+
+    </form>
+{% endblock %}

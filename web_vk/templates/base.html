@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Pupkin</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="cap">
+            <h1>
+                <a href="{% url 'index' %}" class="logotip">AskPupkin</a>
+            </h1>
+
+            <input type="text" class="search-input" placeholder="Search...">
+            <a href="{% url 'ask' %}">
+                <button class="search-button">Ask!</button>
+            </a>
+            <div class="user-block">
+                {% if request.user.is_authenticated %}
+                    <div class="user-profile">
+                        {% if request.user.profile.avatar %}
+                            <img src="{{ request.user.profile.avatar.url }}" alt="Avatar" class="avatar-img">
+                        {% else %}
+                            <img src="/static/img/default_avatar.png" alt="Default Avatar" class="avatar-img">
+                        {% endif %}
+                        <div class="user-info">
+                            <span class="username">{{ request.user.username }}</span>
+                            <div class="user-links">
+                                <a href="{% url 'setting' %}">&#9881; settings</a>
+                                <a href="{% url 'logout' %}">log out</a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="guest-links">
+                        <a href="{% url 'login' %}" class="btn-login">Log in</a>
+                        <a href="{% url 'register' %}" class="btn-register">Register</a>
+                    </div>
+        
+                {% endif %}
+            </div>
+        </div>
+        <div class="main-container">
+
+            <main class="content-area">
+                {% block content %}
+                {% endblock %}
+            </main>
+
+            <aside class="sidebar">
+                <div class="popular-tags">
+                    <h2>Popular Tags</h2>
+                    <div class="tags-cloud">
+                        <a href="" class="tag tag-black tag-sm">perl</a>
+                        <a href="" class="tag tag-red tag-md">python</a>
+                        <a href="" class="tag tag-black tag-sm">TechnoPark</a>
+                        <a href="" class="tag tag-red tag-big">MySQL</a>
+                        <a href="" class="tag tag-green tag-md">django</a>
+                        <a href="" class="tag tag-black tag-sm">Mail.Ru</a>
+                        <a href="" class="tag tag-black tag-sm">Voloshin</a>
+                        <a href="" class="tag tag-yellow tag-sm">Firefox</a>
+                    </div>
+                </div>
+                <div class="Best-Members">
+                    <h2>
+                        Best Members
+                    </h2>
+                    <ul>
+                        <li>
+                            <a href = "">
+                                Mr.Freeman
+                            </a>
+                        </li>
+                        <li>
+                            <a href = "">
+                                Dr.House
+                            </a>
+                        </li>
+                        <li>
+                            <a href = "">
+                                Bender
+                            </a>
+                        </li>
+                        <li>
+                            <a href = "">
+                                Queen Victoria
+                            </a>
+                        </li>
+                        <li>
+                            <a href = "">
+                                V.Pupkin
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            
+        </div>
+
+    </div>
+</body>
+</html>

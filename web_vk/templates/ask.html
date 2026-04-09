@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'ask.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="new-question">
+        <h2><span class="pink-letter">N</span>ew <span class="pink-letter">Q</span>uestion</h2>
+
+        <form method="POST" action="{% url 'ask' %}">
+
+        {% csrf_token %}
+        <div class="title-ask">
+            <h3>Title</h3>
+            <input type="text" name="title" id="title" placeholder="How to build a moon park?" class="form-input">  
+        </div>
+
+        <div class="text-ask">
+            <h3>Text</h3>
+            <textarea name="text" id="text" rows="10" placeholder="Really, how?" class="form-input"></textarea>  
+        </div>
+
+        <div class="tags-ask">
+            <h3>Tags</h3>
+            <input type="text" name="tags" id="tags" placeholder="moon, park, puzzle" class="form-input">
+        </div>
+
+        <button type="submit" class="ask-submit-btn">ASK!</button>
+        </form>
+    </div>
+
+{% endblock %}
