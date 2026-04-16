@@ -8,15 +8,16 @@
 {% block content %}
 <div class="new-questions">
     <h2>
-        <a href="{% url 'index' %}" style="text-decoration: none; color: gray;">New Questions</a> 
-        <span >Hot Questions</span>
+        Tag: {{ tag_name }}
     </h2>
 </div>
 
 {% for question in page_obj %}
     {% include "inc/question_card.html" %}
+
 {% endfor %}
 
+{% include "inc/pagination.html" %}
 
-    {% include "inc/pagination.html" %}
+
 {% endblock %}

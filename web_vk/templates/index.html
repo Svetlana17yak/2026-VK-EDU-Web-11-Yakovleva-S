@@ -9,72 +9,16 @@
         <h2>
             New Questions
         </h2>
-        <a href = ".\hot.html">
+        <a href = "{% url 'hot' %}">
             Hot Questions
         </a>
     </div>
     
     {% for question in page_obj %}
-
-    <div class="card">
-        <div class="left-coloumn">
-            <img src="{% static 'ava1.jpg' %}" alt="Аватар" class="avatar">
-            <div class="rating">
-                <dev class="rating-value">
-                    {{ question.rating }}
-                </dev>
-                <div class="rating-controls">
-                    <button class="vote-btn" title="Like">&#9650;</button>
-                    <button class="vote-btn" title="Dislike">&#9660</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-content">
-            <div class="text">
-                <a href="{% url 'question' question.id %}" class="title">{{ question.title }}</a>
-                <span>{{ question.text }}</span>
-            </div>
-            <div class="answer-tags">
-                <a href="">answer ({{ question.answers_count }})</a> 
-                <span class="tags-label">Tags:</span>
-                <a href="" class="tag">blac-jack</a> 
-                <a href="" class="tag">bender</a>
-            </div>
-        </div>
-        
-    </div>
-    
-    
+        {% include "inc/question_card.html" %}
               
     {% endfor %}
-    <div class="pagination">
-        {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" class="page-item">
-            &laquo;
-        </a>
-        {% endif %}
-
-        {% for p in page_range %}
-
-            {% if p == page_obj.paginator.ELLIPSIS %}
-                <span class="page-item">...</span>
-            {% elif page_obj.number == p %}
-                <span class="page-item active">{{ p }}</span>
-            {% else %}
-                <a href="?page={{ p }}" class="page-item">
-                    {{ p }}
-                </a>
-            {% endif %}
-        {% endfor %}
-
-        {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="page-item">
-                    &raquo;
-                </a>
-        {% endif %}
-
-    </div>
-              
     
+    {% include "inc/pagination.html" %}
+
 {% endblock %}

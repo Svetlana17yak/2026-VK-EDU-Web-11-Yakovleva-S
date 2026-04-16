@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ask Pupkin</title>
+    
     <link rel="stylesheet" href="{% static 'base.css' %}">
     {% block css %}
     {% endblock %}
 </head>
 <body>
+
+    <div class="header-wrapper">
     <div class="container">
         <div class="cap">
             <h1>
@@ -26,25 +29,28 @@
                         {% if request.user.profile.avatar %}
                             <img src="{{ request.user.profile.avatar.url }}" alt="Avatar" class="avatar-img">
                         {% else %}
-                            <img src="/static/img/default_avatar.png" alt="Default Avatar" class="avatar-img">
+                            <img src="/static/Hamster Eyes.jpeg" alt = "Default Avatar" class="avatar-img">
                         {% endif %}
                         <div class="user-info">
                             <span class="username">{{ request.user.username }}</span>
                             <div class="user-links">
                                 <a href="{% url 'setting' %}">&#9881; settings</a>
-                                <a href="{% url 'logout' %}">log out</a>
+                                <a href="{% url 'logout' %}">&#10140; log out</a>
                             </div>
                         </div>
                     </div>
                 {% else %}
                     <div class="guest-links">
-                        <a href="{% url 'login' %}" class="btn-login">Log in</a>
-                        <a href="{% url 'register' %}" class="btn-register">Register</a>
+                        <a href="{% url 'login' %}" class="btn-login">&#10148; Log in</a>
+                        <a href="{% url 'register' %}" class="btn-register">&#9998; Register</a>
                     </div>
         
                 {% endif %}
             </div>
         </div>
+    </div>
+    </div>
+    <div class="container">
         <div class="main-container">
 
             <main class="content-area">
@@ -56,14 +62,14 @@
                 <div class="popular-tags">
                     <h2>Popular Tags</h2>
                     <div class="tags-cloud">
-                        <a href="" class="tag tag-black tag-sm">perl</a>
-                        <a href="" class="tag tag-red tag-md">python</a>
-                        <a href="" class="tag tag-black tag-sm">TechnoPark</a>
-                        <a href="" class="tag tag-red tag-big">MySQL</a>
-                        <a href="" class="tag tag-green tag-md">django</a>
-                        <a href="" class="tag tag-black tag-sm">Mail.Ru</a>
-                        <a href="" class="tag tag-black tag-sm">Voloshin</a>
-                        <a href="" class="tag tag-yellow tag-sm">Firefox</a>
+                        <a href="{% url 'tag_questions' 'perl' %}" class="tag tag-black tag-sm">perl</a>
+                        <a href="{% url 'tag_questions' 'python' %}" class="tag tag-red tag-md">python</a>
+                        <a href="{% url 'tag_questions' 'TechnoPark' %}" class="tag tag-black tag-sm">TechnoPark</a>
+                        <a href="{% url 'tag_questions' 'MySQL' %}" class="tag tag-red tag-big">MySQL</a>
+                        <a href="{% url 'tag_questions' 'django' %}" class="tag tag-green tag-md">django</a>
+                        <a href="{% url 'tag_questions' 'Mail.Ru' %}" class="tag tag-black tag-sm">Mail.Ru</a>
+                        <a href="{% url 'tag_questions' 'Voloshin' %}" class="tag tag-black tag-sm">Voloshin</a>
+                        <a href="{% url 'tag_questions' 'Firefox' %}" class="tag tag-yellow tag-sm">Firefox</a>
                     </div>
                 </div>
                 <div class="Best-Members">
@@ -104,5 +110,10 @@
         </div>
 
     </div>
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Ask Pupkin.</p>
+        </div>
+    </footer>
 </body>
 </html>

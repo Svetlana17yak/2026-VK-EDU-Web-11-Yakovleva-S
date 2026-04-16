@@ -1,0 +1,31 @@
+{% load static %}
+<div class="card">
+        <div class="left-coloumn">
+            <img src="{% static 'ava1.jpg' %}" alt="Аватар" class="avatar">
+            <div class="rating">
+                <dev class="rating-value">
+                    {{ question.rating }}
+                </dev>
+                <div class="rating-controls">
+                    <button class="vote-btn" title="Like">&#9650;</button>
+                    <button class="vote-btn" title="Dislike">&#9660</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-content">
+            <div class="text">
+                <a href="{% url 'question' question.id %}" class="title">{{ question.title }}</a>
+                <span>{{ question.text }}</span>
+            </div>
+            <div class="answer-tags">
+                <a href="">answer ({{ question.answers_count }})</a> 
+                <span class="tags-label">Tags:</span>
+                {% for tag in question.tags %}
+                    <a href="{% url 'tag_questions' tag %}" class="tag">{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </div>
+    

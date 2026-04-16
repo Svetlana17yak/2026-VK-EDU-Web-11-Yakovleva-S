@@ -13,4 +13,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('register/', views.register_view, name='register'),
     path('logout/', views.logout_view, name='logout'),
+    path('tag/<str:tag_name>/', views.tag_questions, name='tag_questions'),
+    path('hot/', views.hot, name='hot'),
 ]

@@ -8,11 +8,11 @@
 
 {% block content %}
     <h2><span class="pink-letter">L</span>og <span class="pink-letter">I</span>n</h2>
-
-    <p>
-        Sorry, wrong password!
-    </p>
-
+    {% if form.errors %}
+        <p class="err">
+            Sorry, wrong password!
+        </p>
+    {% endif %}
     <!-- Форма авторизации -->
     <form method="POST" action="">
         {% csrf_token %}
