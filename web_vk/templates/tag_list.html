@@ -11,13 +11,19 @@
         Tag: {{ tag_name }}
     </h2>
 </div>
+{% if page_obj.object_list %}
+    {% for question in page_obj %}
+        {% include "inc/question_card.html" %}
 
-{% for question in page_obj %}
-    {% include "inc/question_card.html" %}
+    {% endfor %}
 
-{% endfor %}
+    {% include "inc/pagination.html" %}
+{% else %}
+<div class="empty-tag-message">
+        <p>На этот тег еще нет вопросов &#128546;</p>
+        <p>Будьте первым, кто его задаст!</p>
+    </div>
 
-{% include "inc/pagination.html" %}
-
+{% endif %}
 
 {% endblock %}

@@ -21,10 +21,22 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 25px;
-    margin-left: 160px;
+    margin-top: 40px;
 }
 
 .butt {
     display: inline-block;
     width: 100px;
+}
+
+.system-container{
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 768px) {
+    
+    .reg {
+        font-size: 14px;
+        padding-left: 10px;
+    }
 }

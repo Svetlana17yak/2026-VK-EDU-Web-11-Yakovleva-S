@@ -3,46 +3,42 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'setting.css' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
 {% endblock %}
 
 {% block content %}
+<h2 class="sett_h2">&#9881; Settings</h2>
 
-    <h2>
-        <span class="pink-letter">&#9881; S</span>et<span class="pink-letter">t</span><span class="blue-letter">i</span>ngs: {{ request.user.username|default:"Dr. Pepe" }}</span>
-
-    </h2>
-    <form method="POST" action="" enctype="multipart/form-data" class="settings-form">
-
-        {% csrf_token %}
-
-        <div class="login">
-            <label class="text-login">Login</label>
-            <input type="text" name="login" placeholder="dr_pepe">
+<div class="system-container">
+    
+    <div class="system-left">
+        <div class="ava-container">
+            <img src="{% static 'Hamster Eyes.jpeg' %}" alt="Avatar">
+            <p class="user-id">{{ request.user.username }}</p>
         </div>
-
-        <div class="email">
-            <label class="text-email">Email</label>
-            <input type="email" name="email" placeholder="dr.pepe@mail.ru">
+        <div class="upload-section">
+             <label class="avatar-label" for="avatar">CHANGE IMAGE</label>
+             <input type="file" name="avatar" id="avatar" style="display:none;">
         </div>
+    </div>
 
-        <div class="nickname">
-            <label class="nickname">NickName</label>
-            <input type="text" name="nickname" placeholder="Dr. Pepe">
+    <div class="system-right">
+        <div class="input-field">
+            <label>LOGIN</label>
+            <input type="text" name="login" placeholder="{{ request.user.login }}">
         </div>
-
-        <div class="ava">
-            <label class="avatar">Upload avatar</label>
-            
-            <div class="ava-picture">
-                <img src="{% static 'Hamster Eyes.jpeg' %}" alt="Avatar preview">
-                <input type="file" name="avatar">
-            </div>
+        <div class="input-field">
+            <label>EMAIL</label>
+            <input type="email" name="email" placeholder="{{ request.user.email }}">
         </div>
-
-
-        <div class="save-btn">
-            <button type="submit" class="butt">Save</button>
+        <div class="input-field">
+            <label>NICKNAME</label>
+            <input type="text" name="nickname" placeholder="{{ request.user.username }}">
         </div>
+    </div>
+</div>
 
-    </form>
+<div class="save-section">
+    <button type="submit" class="system-button">Save changes</button>
+</div>
 {% endblock %}
