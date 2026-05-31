@@ -3,54 +3,25 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'question.css' %}">
+    
 {% endblock %}
 
 {% block content %}
 
-    <div class="card">
-        <div class="left-coloumn">
-            <img src="{% static 'ava1.jpg' %}" alt="Аватар" class="avatar">
-            <div class="rating">
-                <dev class="rating-value">
-                    {{ question.rating }}
-                </dev>
-                <div class="rating-controls">
-                    <button class="vote-btn" title="Like">&#9650;</button>
-                    <button class="vote-btn" title="Dislike">&#9660</button>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="text-content">
-            <div class="text">
-                <a class="title">{{ question.title }}</a>
-                <span>{{ question.text }}</span>
-            </div>
-        
-            <div class="answer-tags">
-               
-                <span class="tags-label">Tags:</span>
-                <a href="" class="tag">blac-jack</a> 
-                <a href="" class="tag">bender</a>
-            </div>
-        </div>
-    </div>
+    {% include "inc/question_card.html" %}
 
 <hr>
 <h2><span class="pink-letter">A</span>ns<span class="pink-letter">w</span>ers:</h2>
 
-{% for answer in answers %}
+{% for answer in page_obj %}
     <div class="answer-card">
         
         <div class="left-coloumn">
             <img src="{% static 'ava1.jpg' %}" alt="Аватар" class="avatar">
             <div class="rating">
+                <button class="vote-btn" title="Dislike">&#128148;</button>
                 <div class="rating-value">{{ answer.rating }}</div>
-                <div class="rating-controls">
-                    <button class="vote-btn" title="Like">&#9650;</button>
-                    <button class="vote-btn" title="Dislike">&#9660;</button>
-                </div>
+                <button class="vote-btn" title="Like">&#128150;</button>
             </div>
         </div>
 
@@ -72,7 +43,7 @@
 <hr>
 
 <form class="new-answer-form" style="margin-top: 20px;">
-    <textarea class="form-control" rows="5" placeholder="Enter your answer here.." style="width: 100%; margin-bottom: 10px;"></textarea>
+    <textarea class="form-control" rows="5" placeholder="Enter your answer here.." style="width: 100%; margin-bottom: 10px; min-height: 100px; max-height: 800px"></textarea>
     <button type="button" class="btn">Answer</button>
 </form>
 
